@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1512591121 source:c:\c_projects\backtracking\backtracking.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"backtracking.h"
+	"utils.h"
+
+1512591927 source:c:\c_projects\backtracking\main.c
+	<stdio.h>
+	<stdlib.h>
+	"backtracking.h"
+	"utils.h"
+
+1512582432 c:\c_projects\backtracking\backtracking.h
+
+1512590009 c:\c_projects\backtracking\utils.h
+
+1512591966 source:c:\c_projects\backtracking\utils.c
+	<stdio.h>
+	<stdlib.h>
+	"utils.h"
+
