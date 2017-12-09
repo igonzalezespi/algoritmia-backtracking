@@ -6,18 +6,37 @@
 	"backtracking.h"
 	"utils.h"
 
-1512591927 source:c:\c_projects\backtracking\main.c
+1512827031 source:c:\c_projects\backtracking\main.c
 	<stdio.h>
 	<stdlib.h>
-	"backtracking.h"
+	"backtrack1.h"
+	"backtrack2.h"
 	"utils.h"
 
 1512582432 c:\c_projects\backtracking\backtracking.h
 
-1512590009 c:\c_projects\backtracking\utils.h
+1512829390 c:\c_projects\backtracking\utils.h
 
-1512591966 source:c:\c_projects\backtracking\utils.c
+1512829402 source:c:\c_projects\backtracking\utils.c
 	<stdio.h>
 	<stdlib.h>
 	"utils.h"
+
+1512820071 source:c:\c_projects\backtracking\backtrack1.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"backtrack1.h"
+	"utils.h"
+
+1512819994 c:\c_projects\backtracking\backtrack1.h
+
+1512831702 source:c:\c_projects\backtracking\backtrack2.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"backtrack1.h"
+	"utils.h"
+
+1512827059 c:\c_projects\backtracking\backtrack2.h
 

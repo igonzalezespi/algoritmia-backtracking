@@ -1,6 +1,6 @@
-#ifndef BACKTRACKING_H_INCLUDED
-#define BACKTRACKING_H_INCLUDED
+#ifndef BACKTRACK1_H_INCLUDED
+#define BACKTRACK1_H_INCLUDED
 
-void conjuntosRec(int solucion[], int etapa, int tam, int conjunto[], int suma, int solucionFinal[]);
+void conj_rec(int solucion[], int etapa, int tam, int conjunto[], int suma, int solucion_final[]);
 
-#endif // BACKTRACKING_H_INCLUDED
+#endif // BACKTRACK1_H_INCLUDED

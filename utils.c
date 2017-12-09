@@ -31,7 +31,7 @@ void crear(int conjunto[], int tam) {
   int i;
 
   for (i = 0; i<tam; i++) {
-    conjunto[i] = 0;
+    conjunto[i] = -1;
   }
 }
 
@@ -69,7 +69,7 @@ int comparar(int _conjunto1[], int _conjunto2[], int tam) {
   return comparacion == tam; // Devuelve 1 si iguales, 0 si diferentes
 }
 
-int diferenciaAbsoluta(int _conjunto[], int tam) {
+int diferencia_absoluta(int _conjunto[], int tam) {
   int max = 0;
   int maxdiff = 0;
   int i;
@@ -79,7 +79,7 @@ int diferenciaAbsoluta(int _conjunto[], int tam) {
   ordenar(conjunto, tam);
 
   for (i = tam - 1; i >= 0; i--) {
-    if (conjunto[i] != 0) {
+    if (conjunto[i] != -1) {
       if (max < conjunto[i]) {
         max = conjunto[i];
       }
@@ -91,4 +91,12 @@ int diferenciaAbsoluta(int _conjunto[], int tam) {
   }
 
   return maxdiff;
+}
+
+int int_concat(int a, int b) {
+  int pow = 10;
+  while(b >= pow) {
+    pow *= 10;
+  }
+  return a * pow + b;
 }

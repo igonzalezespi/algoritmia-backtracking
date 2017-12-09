@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "backtracking.h"
+#include "backtrack1.h"
 #include "utils.h"
 
-void iniciarValores(int valores[], int solucion[], int tam, int conjunto[]) {
+void conj_iniciar_valores(int valores[], int solucion[], int tam, int conjunto[]) {
   int i, j, k;
   crear(valores, tam);
 
@@ -18,7 +18,7 @@ void iniciarValores(int valores[], int solucion[], int tam, int conjunto[]) {
     }
     if (disponible == 1) {
       for (k = 0; k<tam; k++) {
-        if (valores[k] == 0) {
+        if (valores[k] == -1) {
           valores[k] = conjunto[i];
           break;
         }
@@ -27,62 +27,66 @@ void iniciarValores(int valores[], int solucion[], int tam, int conjunto[]) {
   }
 }
 
-int valido(int solucion[], int tam, int sumaTotal) {
+int conj_valido(int solucion[], int tam, int suma_total) {
   int i;
-  int sumaParcial = 0;
+  int suma_parcial = 0;
 
   for (i = 0; i<tam; i++) {
-    sumaParcial += solucion[i];
-    if (sumaParcial > sumaTotal) {
-      return 0;
+    if (solucion[i] != -1) {
+      suma_parcial += solucion[i];
+      if (suma_parcial > suma_total) {
+        return 0;
+      }
     }
   }
   return 1;
 }
 
-int esSolucion(int solucion[], int tam, int sumaTotal, int solucionFinal[]) {
+int conj_es_solucion(int solucion[], int tam, int suma_total, int solucion_final[]) {
   int i;
-  int sumaParcial = 0;
+  int suma_parcial = 0;
 
-  if (comparar(solucion, solucionFinal, tam) == 1) {
+  if (comparar(solucion, solucion_final, tam) == 1) {
     return 0;
   }
 
   for (i = 0; i<tam; i++) {
-    sumaParcial += solucion[i];
+    if (solucion[i] != -1) {
+      suma_parcial += solucion[i];
+    }
   }
-  if (sumaParcial == sumaTotal) {
+  if (suma_parcial == suma_total) {
     return 1;
   }
   return 0;
 }
 
-void procesarSolucion(int solucion[], int solucionFinal[], int tam) {
-  int diffActual = diferenciaAbsoluta(solucion, tam);
-  int diffFinal = diferenciaAbsoluta(solucionFinal, tam);
-  if (diffActual < diffFinal || solucionFinal[0] == 0) {
-    copiar(solucion, solucionFinal, tam);
+void conj_procesar_solucion(int solucion[], int solucion_final[], int tam) {
+  int diff_actual = diferencia_absoluta(solucion, tam);
+  int diff_final = diferencia_absoluta(solucion_final, tam);
+  if (diff_actual < diff_final || solucion_final[0] == -1) {
+    copiar(solucion, solucion_final, tam);
   }
 }
 
-void conjuntosRec(int solucion[], int etapa, int tam, int conjunto[], int suma, int solucionFinal[]) {
+void conj_rec(int solucion[], int etapa, int tam, int conjunto[], int suma, int solucion_final[]) {
   if (etapa >= tam)  return;
 
-  int valores [tam];
-  iniciarValores(valores, solucion, tam, conjunto);
+  int valores[tam];
+  conj_iniciar_valores(valores, solucion, tam, conjunto);
 
   int i = 0;
   do {
     solucion[etapa] = valores[i];
-    if (valido(solucion, tam, suma)) {
-      if (esSolucion(solucion, tam, suma, solucionFinal)) {
-        procesarSolucion(solucion, solucionFinal, tam);
+    if (conj_valido(solucion, tam, suma)) {
+      if (conj_es_solucion(solucion, tam, suma, solucion_final)) {
+        conj_procesar_solucion(solucion, solucion_final, tam);
       } else {
-        conjuntosRec(solucion,etapa+1, tam, conjunto, suma, solucionFinal);
+        conj_rec(solucion,etapa+1, tam, conjunto, suma, solucion_final);
       }
     }
     i++;
-  } while(i < tam && valores[i] != 0);
-  solucion[etapa]=0;
+  } while(i < tam && valores[i] != -1);
+  solucion[etapa]=-1;
 }
 
