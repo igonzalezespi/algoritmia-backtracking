@@ -2,10 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "backtrack1.h"
+#include "backtrack2.h"
 #include "utils.h"
-
-char letras[11] = "HARYPOTELS";
 
 void tab_iniciar_valores(int valores[], int solucion[], int tam) {
   int i, j, k;
@@ -80,19 +78,25 @@ void tab_procesar_solucion(int solucion[], int tam) {
   int a_descifrar_tam = 14;
   char letras[tam+1];
   char a_descifrar[a_descifrar_tam];
+
   strcpy(letras, "HARYPOTELS");
   strcpy(a_descifrar, "6531484901984");
-  for (i = 0; i<tam; i++) {
-    tabla[solucion[i]] = i;
-  }
 
   printf("Clave: %s\n", a_descifrar);
   printf("Clave desencriptada: ");
+
+  for (i = 0; i<tam; i++) {
+    tabla[solucion[i]] = i; // Construyendo tabla de desencriptación. Número -> letra
+  }
+
   for (i = 0; i<a_descifrar_tam; i++) {
     if (i == a_descifrar_tam-1) {
       printf("\n");
     } else {
-      printf("%c", letras[tabla[a_descifrar[i] - '0']]);
+      int numero = a_descifrar[i] - '0';
+      // tabla[numero] nos da el valor numérico de la letra. (H -> 0, A -> 1, ...)
+      // Consultando este valor numérico en el array "letras" obtenemos la letra
+      printf("%c", letras[tabla[numero]]);
     }
   }
   printf("Tabla utilizada:\n");
@@ -109,21 +113,14 @@ void tab_procesar_solucion(int solucion[], int tam) {
 }
 
 void tab_rec(int solucion[], int etapa, int tam) {
-  /* Posición 0: H;  1: A;  2: R;  3: Y;  4: P;  5: O;  6: T;  7: E;  8: L;  9: S  */
   if (etapa >= tam)  return;
 
   int valores[tam];
   tab_iniciar_valores(valores, solucion, tam);
-//  imprimir(valores, tam);
 
   int i = 0;
   do {
-//    printf("etapa: %d     i: %d\n", etapa, i);
     solucion[etapa] = valores[i];
-//    printf("VALOR ACTUAL: %d\n", valores[i]);
-//    printf("SOLU:");
-//    imprimir(solucion, tam);
-//    system("PAUSE");
     if (tab_valido(solucion, tam)) {
       if (tab_es_solucion(solucion, tam)) {
         tab_procesar_solucion(solucion, tam);
@@ -135,4 +132,3 @@ void tab_rec(int solucion[], int etapa, int tam) {
   } while(i < tam && valores[i] != -1);
   solucion[etapa]=-1;
 }
-

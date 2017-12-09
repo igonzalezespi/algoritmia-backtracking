@@ -14,11 +14,11 @@ void copiar(int src[], int dst[], int tam) {
   }
 }
 
-void imprimir(int conjunto[], int tam) {
+void imprimir(int arr[], int tam) {
   int i;
   printf("{");
   for (i = 0; i<tam; i++) {
-    printf("%d", conjunto[i]);
+    printf("%d", arr[i]);
     if (i < tam - 1) {
       printf(",");
     }
@@ -27,11 +27,11 @@ void imprimir(int conjunto[], int tam) {
 }
 
 
-void crear(int conjunto[], int tam) {
+void crear(int arr[], int tam) {
   int i;
 
   for (i = 0; i<tam; i++) {
-    conjunto[i] = -1;
+    arr[i] = -1;
   }
 }
 
@@ -44,24 +44,24 @@ int _ordenar(const void* a, const void* b) {
   else return 1;
 }
 
-void ordenar(int conjunto[], int tam) {
-  qsort(conjunto, tam, sizeof(int), _ordenar);
+void ordenar(int arr[], int tam) {
+  qsort(arr, tam, sizeof(int), _ordenar);
 }
 
-int comparar(int _conjunto1[], int _conjunto2[], int tam) {
+int comparar(int _arr1[], int _arr2[], int tam) {
   int i, j;
   int comparacion = 0;
-  int conjunto1[tam];
-  int conjunto2[tam];
+  int arr1[tam];
+  int arr2[tam];
 
-  copiar(_conjunto1, conjunto1, tam);
-  copiar(_conjunto2, conjunto2, tam);
+  copiar(_arr1, arr1, tam);
+  copiar(_arr2, arr2, tam);
 
   for (i = 0; i<tam; i++) {
     for (j = 0; j<tam; j++) {
-      if (conjunto1[i] == conjunto2[j]) {
+      if (arr1[i] == arr2[j]) {
         comparacion++;
-        conjunto2[j] = -1;
+        arr2[j] = -1;
         break;
       }
     }
@@ -69,21 +69,21 @@ int comparar(int _conjunto1[], int _conjunto2[], int tam) {
   return comparacion == tam; // Devuelve 1 si iguales, 0 si diferentes
 }
 
-int diferencia_absoluta(int _conjunto[], int tam) {
+int diferencia_absoluta(int _arr[], int tam) {
   int max = 0;
   int maxdiff = 0;
   int i;
-  int conjunto[tam];
+  int arr[tam];
 
-  copiar(_conjunto, conjunto, tam);
-  ordenar(conjunto, tam);
+  copiar(_arr, arr, tam);
+  ordenar(arr, tam);
 
   for (i = tam - 1; i >= 0; i--) {
-    if (conjunto[i] != -1) {
-      if (max < conjunto[i]) {
-        max = conjunto[i];
+    if (arr[i] != -1) {
+      if (max < arr[i]) {
+        max = arr[i];
       }
-      int diff = abs(max - conjunto[i]);
+      int diff = abs(max - arr[i]);
       if (maxdiff < diff) {
         maxdiff = diff;
       }
