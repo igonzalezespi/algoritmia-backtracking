@@ -3,10 +3,12 @@
 
 #include "utils.h"
 
+// Limpia la pantalla
 void cls() {
   system("cls");
 }
 
+// Copia un array por valor (no por referencia)
 void copiar(int src[], int dst[], int tam) {
   int i;
   for (i = 0; i<tam; i++) {
@@ -14,6 +16,7 @@ void copiar(int src[], int dst[], int tam) {
   }
 }
 
+// Imprime un array de números por pantalla
 void imprimir(int arr[], int tam) {
   int i;
   printf("{");
@@ -26,7 +29,7 @@ void imprimir(int arr[], int tam) {
   printf("}\n");
 }
 
-
+// Inicializa un array
 void crear(int arr[], int tam) {
   int i;
 
@@ -35,6 +38,7 @@ void crear(int arr[], int tam) {
   }
 }
 
+// Función callback para: ordenar()
 int _ordenar(const void* a, const void* b) {
   int int_a = * ( (int*) a );
   int int_b = * ( (int*) b );
@@ -44,10 +48,12 @@ int _ordenar(const void* a, const void* b) {
   else return 1;
 }
 
+// Ordena un array de números ascendentemente
 void ordenar(int arr[], int tam) {
   qsort(arr, tam, sizeof(int), _ordenar);
 }
 
+// Indica si dos arrays son iguales aunque estén desordenados
 int comparar(int _arr1[], int _arr2[], int tam) {
   int i, j;
   int comparacion = 0;
@@ -69,34 +75,40 @@ int comparar(int _arr1[], int _arr2[], int tam) {
   return comparacion == tam; // Devuelve 1 si iguales, 0 si diferentes
 }
 
+// Calcula la diferencia absoluta de un array de enteros
 int diferencia_absoluta(int _arr[], int tam) {
-  int max = 0;
-  int maxdiff = 0;
   int i;
   int arr[tam];
-
+  // Copiamos el array en uno temporal
   copiar(_arr, arr, tam);
+  // Lo ordenamos ascendentemente
   ordenar(arr, tam);
 
-  for (i = tam - 1; i >= 0; i--) {
-    if (arr[i] != -1) {
-      if (max < arr[i]) {
-        max = arr[i];
-      }
-      int diff = abs(max - arr[i]);
-      if (maxdiff < diff) {
-        maxdiff = diff;
-      }
+  /*
+    Al estar ordenados ya sabemos el mayor
+    El valor menor, para no contar los -1 recorremos desde el principio hasta encontrar el primero
+    Los restamos de forma que no salga negativo (mayor - menor) y lo devolvemos
+  */
+  for (i = 0; i<tam; i++) {
+    if (arr[i] >= 0) {
+      return arr[tam - 1] - arr[i];
     }
   }
-
-  return maxdiff;
+  return 0;
 }
 
+// Concatena enteros como si fueran cadenas de caracteres
 int int_concat(int a, int b) {
   int pow = 10;
   while(b >= pow) {
     pow *= 10;
   }
   return a * pow + b;
+}
+
+// Pide un entero por pantalla y lo devuelve
+int dame_int() {
+  int seleccion;
+  scanf(" %d", &seleccion); // Se deja un espacio para no leer espacios
+  return seleccion;
 }

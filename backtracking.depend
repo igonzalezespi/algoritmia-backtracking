@@ -6,7 +6,7 @@
 	"backtracking.h"
 	"utils.h"
 
-1512836043 source:c:\c_projects\backtracking\main.c
+1512842313 source:c:\c_projects\backtracking\main.c
 	<stdio.h>
 	<stdlib.h>
 	"menu.h"
@@ -16,14 +16,14 @@
 
 1512582432 c:\c_projects\backtracking\backtracking.h
 
-1512829390 c:\c_projects\backtracking\utils.h
+1512836930 c:\c_projects\backtracking\utils.h
 
-1512834857 source:c:\c_projects\backtracking\utils.c
+1512844372 source:c:\c_projects\backtracking\utils.c
 	<stdio.h>
 	<stdlib.h>
 	"utils.h"
 
-1512820071 source:c:\c_projects\backtracking\backtrack1.c
+1512843582 source:c:\c_projects\backtracking\backtrack1.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -32,18 +32,18 @@
 
 1512819994 c:\c_projects\backtracking\backtrack1.h
 
-1512834777 source:c:\c_projects\backtracking\backtrack2.c
+1512841289 source:c:\c_projects\backtracking\backtrack2.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"backtrack2.h"
 	"utils.h"
 
-1512827059 c:\c_projects\backtracking\backtrack2.h
+1512840559 c:\c_projects\backtracking\backtrack2.h
 
-1512835963 c:\c_projects\backtracking\menu.h
+1512836947 c:\c_projects\backtracking\menu.h
 
-1512836268 source:c:\c_projects\backtracking\menu.c
+1512836950 source:c:\c_projects\backtracking\menu.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>

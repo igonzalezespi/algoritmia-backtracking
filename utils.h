@@ -8,5 +8,6 @@ void crear(int conjunto[], int tam);
 int comparar(int conjunto1[], int conjunto2[], int tam);
 int diferencia_absoluta(int conjunto[], int tam);
 int int_concat(int a, int b);
+int dame_int(void);
 
 #endif // UTILS_H_INCLUDED
