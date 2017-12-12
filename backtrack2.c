@@ -140,7 +140,7 @@ void tab_procesar_solucion(int solucion[], int tam) {
 }
 
 // Función principal
-int tab_rec(int solucion[], int etapa, int tam) {
+int tab_rec(int solucion[], int etapa, int tam, int* nodos) {
   int exito = 0;
 
   if (etapa >= tam)  return exito;
@@ -152,11 +152,12 @@ int tab_rec(int solucion[], int etapa, int tam) {
   do {
     solucion[etapa] = valores[i];
     if (tab_valido(solucion, tam)) {
+      *nodos += 1;
       if (tab_es_solucion(solucion, tam)) {
         tab_procesar_solucion(solucion, tam);
         exito = 1;
       } else {
-        exito = tab_rec(solucion,etapa+1, tam);
+        exito = tab_rec(solucion,etapa+1, tam, nodos);
       }
       if (exito == 0) {
         solucion[etapa]=-1;

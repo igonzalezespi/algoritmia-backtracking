@@ -20,6 +20,7 @@ int dame_int_rec() {
 int main() {
   // Menú recursivo para elegir un ejercicio
   int ejercicio = menu();
+  int nodos;
   while (ejercicio != 0) {
     if (ejercicio == 1) { // Elige el ejercicio 1
       int i;
@@ -39,10 +40,10 @@ int main() {
       crear(solucion, tam); // Inicializamos a -1
       crear(solucion_final, tam);
       // Empieza backtracking
-      conj_rec(solucion, 0, tam, conjunto, suma, solucion_final);
+      nodos = 1; // Contamos el nodo raiz
+      conj_rec(solucion, 0, tam, conjunto, suma, solucion_final, &nodos);
       printf("Solucion: ");
       imprimir(solucion_final, tam);
-      system("PAUSE");
     } else if (ejercicio == 2) { // Elige el ejercicio 2
       int tam = 10; // Suma del número de letras en "HARRY POTTER TROLLS", quitando las repetidas
       int solucion[tam];
@@ -51,7 +52,11 @@ int main() {
 
       crear(solucion, tam); // Inicializamos a -1
       // Empieza backtracking
-      tab_rec(solucion, 0, tam);
+      nodos = 1; // Contamos el nodo raiz
+      tab_rec(solucion, 0, tam, &nodos);
+    }
+    if (ejercicio == 1 || ejercicio == 2) {
+      printf("Nodos generados: %d\n", nodos);
       system("PAUSE");
     }
     ejercicio = menu();

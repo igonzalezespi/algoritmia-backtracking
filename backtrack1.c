@@ -85,7 +85,7 @@ void conj_procesar_solucion(int solucion[], int solucion_final[], int tam) {
 }
 
 // Función principal
-void conj_rec(int solucion[], int etapa, int tam, int conjunto[], int suma, int solucion_final[]) {
+void conj_rec(int solucion[], int etapa, int tam, int conjunto[], int suma, int solucion_final[], int* nodos) {
   if (etapa >= tam)  return;
 
   int valores[tam];
@@ -95,10 +95,11 @@ void conj_rec(int solucion[], int etapa, int tam, int conjunto[], int suma, int 
   do {
     solucion[etapa] = valores[i];
     if (conj_valido(solucion, tam, suma)) {
+      *nodos += 1;
       if (conj_es_solucion(solucion, tam, suma, solucion_final)) {
         conj_procesar_solucion(solucion, solucion_final, tam);
       } else {
-        conj_rec(solucion,etapa+1, tam, conjunto, suma, solucion_final);
+        conj_rec(solucion,etapa+1, tam, conjunto, suma, solucion_final, nodos);
       }
     }
     i++;
